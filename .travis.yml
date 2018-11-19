@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t tcscheurer/automated-deploy-app -f Dockerfile.dev .
+
+script:
+  - docker run tcscheurer/automated-deploy-app npm run test -- --coverage
